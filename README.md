@@ -50,3 +50,42 @@ After this, we have:
 -   Lambda function
 -   Web server using Serverless Express in the function
 -   Some boilerplate code for different methods on the `/items` route
+
+---
+
+## 3) Preparing our API to test
+
+We can find our main function handler with the `event` and `context` being proxied to an express server located at `./app.js` in the next path: **amplify/backend/function/serverlesslambda/src/index.js**.
+
+```js
+const awsServerlessExpress = require("aws-serverless-express");
+const app = require("./app");
+
+const server = awsServerlessExpress.createServer(app);
+
+exports.handler = (event, context) => {
+	console.log(`EVENT: ${JSON.stringify(event)}`);
+	return awsServerlessExpress.proxy(server, event, context, "PROMISE").promise;
+};
+```
+
+We can find our express sorver with some boilerplate code on: **amplify/backend/function/serverlesslambda/src/app.js**.
+
+Here, try to find the route for `app.get('/items')` and update it:
+
+```js
+app.get("/items", function (req, res) {
+	const items = ["This", "is", "the", "method", "route", "for", "/items"];
+	res.json({ success: "get call succeed!", url: req.url });
+});
+```
+
+Before deploying it, we can test if locally.
+To do this, we have to install some dependencies corresponding that are already listed in the **package.json** inside `amplify/backend/function/serverlesslambda/src/`.
+We can direcly run `npm install` inside this route, or do this by following this command line:
+
+```bash
+$ cd amplify/backend/function/serverlesslambda/src && npm install && cd ../../../../../
+```
+
+---
