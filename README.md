@@ -113,3 +113,28 @@ $ amplify mock function serverlesslambda
 If all works fine, we are gonna see a call execution with our `items` array.
 
 ---
+
+## 5) Deploying our API
+
+To deploy the API and function, we can run the `push` command:
+
+```bash
+$ amplify push
+```
+
+Now, you can interact with your API, for example like:
+
+```js
+// Pulling: GET
+const items = await API.get("api_url", "/items");
+
+// Pushing: POST
+const data = { body: { items: ["some", "new", "items"] } };
+await API.post("api_url", "/items", data);
+```
+
+In the future, if you want to add additional path, run the following command:
+
+```bash
+$ amplify update api
+```

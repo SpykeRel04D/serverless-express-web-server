@@ -10,6 +10,14 @@
       "StackName": "amplify-serverlessexpressweb-dev-123151",
       "StackId": "arn:aws:cloudformation:eu-west-2:513990107642:stack/amplify-serverlessexpressweb-dev-123151/8ff04f40-7501-11eb-ad6e-0a83d4a76cd4",
       "AmplifyAppId": "du83m4mv8rq1y"
+    },
+    "categories": {
+      "function": {
+        "serverlesslambda": {
+          "deploymentBucketName": "amplify-serverlessexpressweb-dev-123151-deployment",
+          "s3Key": "amplify-builds/serverlesslambda-397372425648326f4148-build.zip"
+        }
+      }
     }
   }
 }
