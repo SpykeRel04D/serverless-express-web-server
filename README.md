@@ -112,6 +112,8 @@ $ amplify mock function serverlesslambda
 
 If all works fine, we are gonna see a call execution with our `items` array.
 
+[Test the API from terminal Documentation](https://docs.amplify.aws/cli/restapi/testing)
+
 ---
 
 ## 5) Deploying our API
