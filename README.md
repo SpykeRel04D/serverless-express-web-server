@@ -89,3 +89,27 @@ $ cd amplify/backend/function/serverlesslambda/src && npm install && cd ../../..
 ```
 
 ---
+
+## 4) Test our API Locally
+
+As we have said, we can test our API Locally before deploy it.
+
+First, we are gonna define our call execution. To do this, we have to edit `event.json` inside `amplify/backend/function/serverlesslambda/src/`.
+
+```js
+{
+	"httpMethod": "GET",
+	"path": "/items"
+}
+```
+
+Then, to invoke the function and start thhe server, run the following command:
+
+```bash
+$ amplify mock function serverlesslambda
+? Provide the pathh to the event JSON object relative to ...: src/event.json
+```
+
+If all works fine, we are gonna see a call execution with our `items` array.
+
+---
